@@ -1,0 +1,44 @@
+@charset "ISO-8859-1";
+
+.content {
+	width: 960px;
+	margin: 10px auto;
+	padding: 10px;
+	background: white;
+	font-size: 14px;
+}
+
+h2 {
+	text-align: center;
+}
+
+.dezenas {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	max-width: 800px;
+}
+
+.dezena {
+	border-radius: 50%;
+	border: 1px solid;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	margin: 0 5px 5px 0;
+}
+
+.concursos {
+	margin-bottom: 10px;
+}
+
+.flexWrap {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.contador {
+	margin-bottom: 10px;
+}
