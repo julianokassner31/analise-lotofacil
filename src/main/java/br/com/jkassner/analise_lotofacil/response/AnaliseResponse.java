@@ -14,7 +14,7 @@ public class AnaliseResponse {
 
 	List<ConcursoLotoFacil> concursos;
 	Map<Integer, Integer> counterDezenas = new HashMap<>();
-	Map<String, Integer> sequencias = new HashMap<>();
+	Map<String, List<Long>> sequencias = new HashMap<>();
 	
 	public void setCounterDezenas(Map<Integer, List<Integer>> collect) {
 		collect.entrySet().forEach(entry -> {

@@ -51,7 +51,7 @@ public class AnaliseService {
 		
 		Map<Integer, List<Integer>> collect = dezenasList.stream().collect(Collectors.groupingBy(Function.identity()));
 		
-		Map<String, Integer> sequencies = mountSequencies(concursos);
+		Map<String, List<Long>> sequencies = mountSequencies(concursos);
 		
 		AnaliseResponse analiseResponse = new AnaliseResponse();
 		analiseResponse.setCounterDezenas(collect);
@@ -61,37 +61,36 @@ public class AnaliseService {
 		return analiseResponse;
 	}
 	
-	private Map<String, Integer> mountSequencies(List<ConcursoLotoFacil> concursos) {
+	private Map<String, List<Long>> mountSequencies(List<ConcursoLotoFacil> concursos) {
 		
-		Map<String, Integer> sequencies = new HashMap<>();
+		Map<String, List<Long>> dezenas = new HashMap<>();
 		
 		concursos.forEach(concurso -> {
 			
 			Iterator<Integer> iterator = createIteratorWithDezenas(concurso.getDezenasLotoFacilOrdenadas());
-			
 			Integer atual = (Integer) iterator.next();
 			String sequencieAtual = "";
 			
 			while (iterator.hasNext()) {
 				
 				Integer proxima = (Integer) iterator.next();
-				
 				String sequencie = getSequencie(sequencieAtual, atual, proxima);
 				
 				if (!ObjectUtils.isEmpty(sequencie)) {
 
 					if (sequencie.equals(sequencieAtual)) {
-						
-						if (sequencies.containsKey(sequencie)) {
-							sequencies.put(sequencie, sequencies.get(sequencie) + 1);
-						} else {
-							sequencies.put(sequencie, 1);
-						}
-
+						put(dezenas, sequencie, concurso.getIdConcurso());
 						sequencieAtual = "";
 						
 					} else {
-						sequencieAtual = sequencie;
+						
+						if (iterator.hasNext()) {
+							sequencieAtual = sequencie;
+						
+						} else {
+							put(dezenas, sequencie, concurso.getIdConcurso());
+							sequencieAtual = "";
+						}
 					}
 				}
 								
@@ -99,7 +98,21 @@ public class AnaliseService {
 			}
 		});
 		
-		return sequencies;
+		return dezenas;
+	}
+
+	private void put(Map<String, List<Long>> sequencies, String sequencie, Long idConcurso) {
+		
+		if (sequencies.containsKey(sequencie)) {
+			List<Long> list = sequencies.get(sequencie);
+			list.add(idConcurso);
+			sequencies.put(sequencie, list);
+		
+		} else {
+			List<Long> list = new ArrayList<Long>();
+			list.add(idConcurso);
+			sequencies.put(sequencie, list);
+		}
 	}
 	
 	private Iterator<Integer> createIteratorWithDezenas(DezenasLotoFacilOrdenadas concurso) {

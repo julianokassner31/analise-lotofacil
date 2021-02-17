@@ -23,7 +23,8 @@ window.onload = function () {
 		
 		var divQtVezes =  document.createElement("div");
 		divQtVezes.style.marginLeft = '10px';
-		divQtVezes.innerText = ' Sequencia com '+ split.length +' dezenas seguidas e saiu '+ analise[keys[i]] + ' vezes.';
+		divQtVezes.innerText = ' Sequencia com '+ split.length +' dezenas seguidas e saiu '+ analise[keys[i]].length + ' vezes no(s) ' +
+		' concurso(s) ' + analise[keys[i]];
 		
 		divSequencia.appendChild(divQtVezes);
 		

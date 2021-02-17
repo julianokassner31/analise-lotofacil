@@ -20,8 +20,8 @@ public class AnaliseController {
 		return "form"; 
 	}
 	
-	@PostMapping(value = "/analise")
-	public String teste(int qtJogos, Model model) {
+	@PostMapping(value = "/analisar")
+	public String analisar(int qtJogos, Model model) {
 		
 		AnaliseResponse analise = analiseService.analisar(qtJogos);
 		
