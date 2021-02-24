@@ -10,78 +10,95 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/lodash.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 
-<title>Análise de jogos da Lotofácil</title>
+<title th:text="#{analise.jogos.lotofacil}"></title>
 </head>
 <body>
 	<div class="content">
 		
-		<h2>Análise de jogos da Lotofácil</h2>
+		<h2 th:text="#{analise.jogos.lotofacil}"></h2>
 		 
 		<div class="concursos">
-			<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    			Expandir Concursos
+			
+			<a th:text="#{expandir.concursos}" class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
 		 	</a>
+		 	
 		 	<div class="collapse" id="collapseExample">
-			<h5 style="text-align: center;">Concursos</h5>
-			<th:block th:each="concurso : ${analise.concursos}">
-				<div>
-					<span th:text="'Concurso Nº: ' + ${concurso.idConcurso}"></span> 
-				</div>
-				<div>
-					<span th:text="'Data do Sorteio: ' + ${concurso.dtSorteio}"></span>
-				</div>
-				<div class="dezenas">
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.primeira}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.segunda}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.terceira}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.quarta}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.quinta}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.sexta}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.setima}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.oitava}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.nona}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.decima}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.decimaPrimeira}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.decimaSegunda}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.decimaTerceira}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.decimaQuarta}"></span> 
-					<span class="dezena" th:text="${concurso.dezenasLotoFacilOrdenadas.decimaQuinta}"></span> 
-				</div>
-				<br>
-			</th:block>
+			
+				<h5 th:text="#{mostrando.concursos.pesquisados(${qtJogos})}" style="text-align: center;"></h5>
+				
+				<th:block th:each="concurso : ${analise.concursos}">
+					
+					<div>
+						<span th:attr="'id'=${concurso.idConcurso}" th:text="#{concurso.numero(${concurso.idConcurso})}"></span> 
+					</div>
+					
+					<div>
+						<span th:text="#{data.sorteio(${#calendars.format(concurso.dtSorteio,'dd MMMM yyyy')})}"></span>
+					</div>
+					
+					<div class="dezenas">
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.primeira}" th:text="${concurso.dezenasLotoFacilOrdenadas.primeira}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.segunda}" th:text="${concurso.dezenasLotoFacilOrdenadas.segunda}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.terceira}" th:text="${concurso.dezenasLotoFacilOrdenadas.terceira}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.quarta}" th:text="${concurso.dezenasLotoFacilOrdenadas.quarta}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.quinta}" th:text="${concurso.dezenasLotoFacilOrdenadas.quinta}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.sexta}" th:text="${concurso.dezenasLotoFacilOrdenadas.sexta}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.setima}" th:text="${concurso.dezenasLotoFacilOrdenadas.setima}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.oitava}" th:text="${concurso.dezenasLotoFacilOrdenadas.oitava}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.nona}" th:text="${concurso.dezenasLotoFacilOrdenadas.nona}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.decima}" th:text="${concurso.dezenasLotoFacilOrdenadas.decima}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.decimaPrimeira}" th:text="${concurso.dezenasLotoFacilOrdenadas.decimaPrimeira}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.decimaSegunda}" th:text="${concurso.dezenasLotoFacilOrdenadas.decimaSegunda}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.decimaTerceira}" th:text="${concurso.dezenasLotoFacilOrdenadas.decimaTerceira}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.decimaQuarta}" th:text="${concurso.dezenasLotoFacilOrdenadas.decimaQuarta}"></span> 
+						<span class="dezena" th:attr="'id'=${concurso.idConcurso} + '_'+ ${concurso.dezenasLotoFacilOrdenadas.decimaQuinta}" th:text="${concurso.dezenasLotoFacilOrdenadas.decimaQuinta}"></span> 
+					</div>
+					<br>
+				</th:block>
+			</div>
 		</div>
+		
+		<div class="sequencias">
+			
+			<a th:text="#{expandir.sequencias}" class="btn btn-primary" data-toggle="collapse" href="#sequencias" role="button" aria-expanded="true" aria-controls="sequencias">
+	  		</a>
+			
+			<div class="collapse" id="sequencias">
+				
+				<h5 style="text-align: center;" th:text="#{numero.vezes.sequencia.saiu(${qtJogos})}"></h5>
+				
+				<div id="content-sequencias"></div>
+				
+				<span th:text="#{foram.encontradas.tantas.sequencias(${analise.sequencias.size()}, ${qtJogos})}"></span>
+					
+			</div>
 		</div>
 		
 		<div class="contador">
-			<a class="btn btn-primary" data-toggle="collapse" href="#counterDezena" role="button" aria-expanded="true" aria-controls="counterDezena">
-	    		Expandir contador 
+			
+			<a th:text="#{expandir.contador}" class="btn btn-primary" data-toggle="collapse" href="#counterDezena" role="button" aria-expanded="true" aria-controls="counterDezena">
 	  		</a>
+	  		
 			<div class="collapse" id="counterDezena">
-				<h5 style="text-align: center;">Nº de vezes que a dezena saiu nos últimos <span th:text="${qtJogos}"></span> jogos.</h5>
+				
+				<h5 style="text-align: center;" th:text="#{numero.vezes.dezena.saiu(${qtJogos})}"></h5>
+				
 				<div class="flexWrap">
 					<th:block th:each="dezena : ${analise.counterDezenas}">
-							<span class="dezena" th:text="${dezena.key}"> </span>&nbsp;<span th:text="' saiu ' + ${dezena.value} + ' vezes.' "></span>&nbsp; 
+							<span class="dezenaContandor" th:text="${dezena.key}"> </span>&nbsp;<span th:text="#{saiu.tantas.vezes(${dezena.value})}"></span>&nbsp; 
 					</th:block>
 				</div>
 			</div>
 		</div>
 		
-		<div class="sequencias">
-			<a class="btn btn-primary" data-toggle="collapse" href="#sequencias" role="button" aria-expanded="true" aria-controls="sequencias">
-	    		Expandir sequências 
-	  		</a>
-			<div class="collapse" id="sequencias">
-				<h5 style="text-align: center;">Nº de vezes que uma sequência saiu nos últimos <span th:text="${qtJogos}"></span> jogos.</h5>
-				<div id="content-sequencias">
-				</div>
-				<span th:text="'Foram encontradas ' + ${analise.sequencias.size()} + ' sequências.'"></span>
-					
-			</div>
-		</div>
 		<script th:inline="javascript">
-    		var analise = [[${analise.sequencias}]];
+		/*<![CDATA[*/
+    		var analiseSequencias = /*[[${analise.sequencias}]]*/;
+    		var concursos = /*[[${analise.concursos}]]*/;
+   		/*]]>*/
 		</script>
 	</div>
 </body>

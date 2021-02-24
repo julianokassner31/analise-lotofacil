@@ -1,7 +1,10 @@
 package br.com.jkassner.analise_lotofacil.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -90,7 +94,52 @@ public class ConcursoLotoFacil implements Serializable, Concurso {
     @Column(name = "dqi_dezena", nullable = false)
     private Integer dqiDezena;
     
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Column(name = "vl_arrecadacao_total", nullable = false)
+    private BigDecimal vlArrecadacaoTotal;
+
+    @Column(name = "nr_ganhadores_15_num")
+    private int nrGanhadores15Num;
+
+    @Column(name = "nr_ganhadores_14_num")
+    private int nrGanhadores14Num;
+
+    @Column(name = "nr_ganhadores_13_num")
+    private int nrGanhadores13Num;
+
+    @Column(name = "nr_ganhadores_12_num")
+    private int nrGanhadores12Num;
+
+    @Column(name = "nr_ganhadores_11_num")
+    private int nrGanhadores11Num;
+
+    @Column(name = "vl_rateio_15_num", nullable = false)
+    private BigDecimal vlRateio15Num;
+
+    @Column(name = "vl_rateio_14_num", nullable = false)
+    private BigDecimal vlRateio14Num;
+
+    @Column(name = "vl_rateio_13_num", nullable = false)
+    private BigDecimal vlRateio13Num;
+
+    @Column(name = "vl_rateio_12_num", nullable = false)
+    private BigDecimal vlRateio12Num;
+
+    @Column(name = "vl_rateio_11_num", nullable = false)
+    private BigDecimal vlRateio11Num;
+
+    @Column(name = "vl_acumulado_15_num", nullable = false)
+    private BigDecimal vlAcumulado15Num;
+
+    @Column(name = "vl_estimativa_premio")
+    private BigDecimal vlEstimativaPremio;
+
+    @Column(name = "vl_acumulado_especial")
+    private BigDecimal vlAcumuladoEspecial;
+
+    @OneToMany(mappedBy = "concursoLotoFacil", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<Cidade> cidades = new ArrayList<>();
+    
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_dezenas_ordenadas", referencedColumnName = "id")
     DezenasLotoFacilOrdenadas dezenasLotoFacilOrdenadas;
 }

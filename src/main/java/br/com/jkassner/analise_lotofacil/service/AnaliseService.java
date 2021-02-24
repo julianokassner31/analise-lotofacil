@@ -27,7 +27,7 @@ public class AnaliseService {
 	ConcursoLotoFacilRepository concursoLotoFacilRepository;
 	
 	public AnaliseResponse analisar(int qtJogos) {
-		PageRequest page = PageRequest.of(0, qtJogos, Direction.DESC, "id");
+		PageRequest page = PageRequest.of(0, qtJogos, Direction.DESC, "idConcurso");
 		List<ConcursoLotoFacil> concursos = concursoLotoFacilRepository.getUltimosConcursos(page);
 		
 		List<Integer> dezenasList = new ArrayList<>();

@@ -16,7 +16,7 @@ public class AnaliseController {
 	AnaliseService analiseService;
 	
 	@GetMapping(value = "/form")
-	public String form (Model model) {
+	public String form(Model model) {
 		return "form"; 
 	}
 	

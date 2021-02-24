@@ -1,8 +1,6 @@
 package br.com.jkassner.analise_lotofacil.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Getter;
-import lombok.Setter;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name="dezenas_lotofacil_ordenadas")
@@ -29,6 +31,7 @@ public class DezenasLotoFacilOrdenadas implements Serializable{
     private Long id;
 
     @OneToOne(mappedBy = "dezenasLotoFacilOrdenadas")
+    @JsonIgnore
     private ConcursoLotoFacil concursoLotoFacil;
 
     @Column(name = "primeira", nullable = false)

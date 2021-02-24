@@ -20,15 +20,20 @@ h2 {
 	max-width: 800px;
 }
 
-.dezena {
+.dezena, .dezenaContandor {
 	border-radius: 50%;
 	border: 1px solid;
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height: 30px;
 	text-align: center;
 	margin: 0 5px 5px 0;
+	padding: 3px 0px;
 }
-
+.dezenaContandor {
+	width: 25px;
+	height: 25px;
+	padding: 0px 0px;
+}
 .concursos {
 	margin-bottom: 10px;
 }
@@ -40,5 +45,5 @@ h2 {
 }
 
 .contador {
-	margin-bottom: 10px;
+	margin-top: 10px;
 }
