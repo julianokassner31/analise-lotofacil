@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.com.jkassner.analise_lotofacil.model.ConcursoLotoFacil;
+import br.com.jkassner.pojo.model.ConcursoLotoFacil;
 import lombok.Getter;
 import lombok.Setter;
 

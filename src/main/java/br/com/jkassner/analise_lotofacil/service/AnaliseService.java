@@ -15,10 +15,10 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import br.com.jkassner.analise_lotofacil.model.ConcursoLotoFacil;
-import br.com.jkassner.analise_lotofacil.model.DezenasLotoFacilOrdenadas;
 import br.com.jkassner.analise_lotofacil.repository.ConcursoLotoFacilRepository;
 import br.com.jkassner.analise_lotofacil.response.AnaliseResponse;
+import br.com.jkassner.pojo.model.ConcursoLotoFacil;
+import br.com.jkassner.pojo.model.DezenasLotoFacilOrdenadas;
 
 @Service
 public class AnaliseService {
