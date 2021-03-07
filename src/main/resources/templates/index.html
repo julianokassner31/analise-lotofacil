@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Analise Lotofácil</title>
+</head>
+<body>
+	<h1>Bem vindo á Análise Lotofácil</h1>
+	<p> Você será direcionado para o site em <b id="time">5</b> segundos...</p>
+	<script type="text/javascript">
+		setInterval(function() {
+			
+			var time = document.getElementById("time");
+			
+			if (time.innerText === "0") {
+				window.location.pathname = "[[${#request.contextPath}]]" + "/form";
+
+			} else {
+				time.innerText = Number(time.innerText) - 1;
+			}
+		}, 1000);
+	</script>
+</body>
+</html>

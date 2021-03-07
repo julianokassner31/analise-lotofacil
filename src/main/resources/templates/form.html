@@ -9,7 +9,7 @@
 <title>Enviar</title>
 </head>
 <body>
-<form action="/analisar" method="post">
+<form th:action="@{/analisar}" method="post">
 	<span> Quantidade de jogos para analisar: <input type="number" name="qtJogos" /> </span>
 	<button type="submit">Enviar</button>
 </form>
