@@ -16,7 +16,7 @@ window.onload = function () {
 
 		const concursos = analiseSequencias[sequenceKeys[i]];
 
-		testePaint(concursos, sequencie, bgColor, fontColor);
+		paintDezenasExpandirConcursos(concursos, sequencie, bgColor, fontColor);
 
 		divSequencia.appendChild(createDivQtVezes(sequencie.length, concursos.length));
 
@@ -26,7 +26,7 @@ window.onload = function () {
 	}
 };
 
-function testePaint(concursos, sequencie, bgColor, fontColor) {
+function paintDezenasExpandirConcursos(concursos, sequencie, bgColor, fontColor) {
 
 	for (let i= 0; i < concursos.length; i++) {
 
