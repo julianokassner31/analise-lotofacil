@@ -20,7 +20,7 @@ h2 {
 	max-width: 800px;
 }
 
-.dezena, .dezenaContandor {
+.dezena, .dezenaContador {
 	border-radius: 50%;
 	border: 1px solid;
 	width: 30px;
@@ -29,7 +29,7 @@ h2 {
 	margin: 0 5px 5px 0;
 	padding: 3px 0px;
 }
-.dezenaContandor {
+.dezenaContador {
 	width: 25px;
 	height: 25px;
 	padding: 0px 0px;
@@ -45,5 +45,9 @@ h2 {
 }
 
 .contador {
+	display: flex;
+}
+
+.contentContador {
 	margin-top: 10px;
 }

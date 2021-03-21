@@ -18,7 +18,7 @@
 <body>
 	<div class="content">
 		
-		<h2 th:text="#{analise.jogos.lotofacil}"></h2>
+		<a th:href="@{/form}">Voltar</a> <h2 th:text="#{analise.jogos.lotofacil}"></h2>
 		 
 		<div class="concursos">
 			
@@ -77,7 +77,7 @@
 			</div>
 		</div>
 		
-		<div class="contador">
+		<div class="contentContador">
 			
 			<a th:text="#{expandir.contador}" class="btn btn-primary" data-toggle="collapse" href="#counterDezena" role="button" aria-expanded="true" aria-controls="counterDezena">
 	  		</a>
@@ -86,11 +86,13 @@
 				
 				<h5 style="text-align: center;" th:text="#{numero.vezes.dezena.saiu(${qtJogos})}"></h5>
 				
-				<div class="flexWrap">
-					<th:block th:each="dezena : ${analise.counterDezenas}">
-							<span class="dezenaContandor" th:text="${dezena.key}"> </span>&nbsp;<span th:text="#{saiu.tantas.vezes(${dezena.value})}"></span>&nbsp; 
-					</th:block>
-				</div>
+				<th:block th:each="dezena : ${analise.counterDezenas}">
+					<div class="contador">
+						<div class="dezenaContador" th:text="${dezena.key}"> </div>
+				&nbsp;		<span class="spanContador" th:text="#{saiu.tantas.vezes(${dezena.value}, ${dezena.value} / ${qtJogos} * 100)}"></span><br>
+					</div>
+				</th:block>
+
 			</div>
 		</div>
 		
