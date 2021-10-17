@@ -138,7 +138,7 @@ public class AnaliseService {
 	
 	private String getSequencie(String sequencieAtual, Integer dezenaAtual, Integer proximaDezena) {
 		
-		if(new Integer(dezenaAtual + 1).equals(proximaDezena)) {
+		if(Integer.valueOf(dezenaAtual + 1).equals(proximaDezena)) {
 			
 			if(ObjectUtils.isEmpty(sequencieAtual)) {
 				

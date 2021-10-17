@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analise-lotofacil
+  labels:
+    app: analise-lotofacil
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: analise-lotofacil
+  template:
+    metadata:
+      labels:
+        app: analise-lotofacil
+    spec:
+      containers:
+        - name: analiselotofacil
+          image: julianokassner/analiselotofacil
+          ports:
+            - containerPort: 8081
+          env:
+            - name: DNS
+              value: "postgres"
